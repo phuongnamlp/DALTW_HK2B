@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MyData">
+  <DataContextMoniker Name="/MyDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0352c7d7-0f64-482b-b533-83be1cdc3f90" absoluteBounds="7.125, 2.25, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/MyDataDataContext/Tour" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c5a0212-f60c-4bcd-9891-475ecc2a9fd5" absoluteBounds="7.14, 2.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dd90a96b-03e9-484b-b601-79e5a4862aff" absoluteBounds="4.375, 2.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/MyDataDataContext/KhachHang" />
+      <nestedChildShapes>
+        <elementListCompartment Id="94bbe13c-48e5-47aa-b84d-7fa87f7af946" absoluteBounds="4.39, 3.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="48fc090f-0f99-41ff-bc0a-23b904aad397" absoluteBounds="3.875, 1.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/MyDataDataContext/DonHangDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cccc77ae-e814-4c3c-90b0-6146f7be8f8b" absoluteBounds="3.89, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
