@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Project_Travel.Models.Tour>
+
+@{
+    ViewBag.Title = "ListTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListTour</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+    @*@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTour)
+                </td>
+                <td>
+                    <img src="@item.Hinh" width="270px" alt="Alternate Text" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKhoiHanh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhuongTien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoNgayDi)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.MaTour }) |
+                    @Html.ActionLink("Detail", "Detail", new { id=item.MaTour }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.MaTour })
+                </td>
+            </tr>
+        }*@
+
+    @foreach (var item in Model)
+    {
+        <div style="display: inline-block; padding: 50px; border-style: solid; border-color: #ccc" class="card" style="width: 18rem;">
+            <img src="@item.Hinh" width="270px" height="180px" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Tour : @item.TenTour</h3>
+                <p class="card-text">
+                    Giá tiền: @item.Gia
+                    <br />
+                    Ngày khởi hành: @item.NgayKhoiHanh
+                    <br />
+                    Phương tiện: @item.PhuongTien
+                    <br />
+                    Số ngày đi: @item.SoNgayDi
+                </p>
+                <div style="background: aqua" class="btn btn-primary">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaTour })
+                </div>
+                <div style="background: aqua " class="btn btn-primary">
+                    @Html.ActionLink("Detail", "Detail", new { id = item.MaTour })
+                </div>
+                <div style="background: aqua " class="btn btn-primary">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaTour })
+                </div>
+                <div style="text-align: center; padding-top: 20px" class="DatMua">
+                    <a class="btn btn-success" href="@Url.Action("ThemGiohang", "Giohang", new { @MaTour = item.MaTour, @strURL = Request.Url.ToString() })">Đặt mua</a>
+                </div>
+
+            </div>
+        </div>
+
+    }
+
+</table>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Project_Travel.Models.Tour>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    <strong>@item.TenTour</strong>
+                </div>
+                <div class="panel-body">
+                    <p><strong>Mã Tour : </strong>@item.MaTour</p>
+                    <p><img src="@item.Hinh" width="270S" alt="thumnail" /></p>
+                    <p><strong>Giá : </strong>@item.Gia</p>
+                    <p><strong>Ngày Khởi Hành : </strong>@item.NgayKhoiHanh</p>
+                    <p><strong>Phương Tiện : </strong>@item.PhuongTien</p>
+                    <p><strong>Số Ngày Đi : </strong>@item.SoNgayDi</p>
+                    <p><strong>Hotel_Tiêu Chuẩn : </strong>@item.Hotel_TieuChuan</p>
+                    <p><strong>Giá Người Lớn : </strong>@item.GiaNguoiLon</p>
+                    <p><strong>Giá Trẻ Em : </strong>@item.GiaTreEm</p>
+                    <p><strong>Ghi Chú : </strong>@item.GhiChu</p>
+
+
+                </div>
+                <div class="panel-footer clearfix">
+                    <div class="pull-right">
+                        <div class="DatMua">
+                            <a class="btn btn-success" href="@Url.Action("ThemGioHang","GioHang",new {@id = item.MaTour,@strURL = Request.Url.ToString()} )">Đặt Mua</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

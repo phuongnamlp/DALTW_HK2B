@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TourDB" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=TourDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TourDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tour" Member="Tours">
+    <Type Name="Tour">
+      <Column Name="MaTour" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenTour" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Hinh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NgayKhoiHanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhuongTien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoNgayDi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Hotel_TieuChuan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaNguoiLon" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="GiaTreEm" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Tour_DonHangDetail" Member="DonHangDetails" ThisKey="MaTour" OtherKey="MaTour" Type="DonHangDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenDangNhap" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="KhachHang_DonHang" Member="DonHangs" ThisKey="MaKH" OtherKey="MaKH" Type="DonHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonHangDetail" Member="DonHangDetails">
+    <Type Name="DonHangDetail">
+      <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaTour" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ten" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TongGia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="Tour_DonHangDetail" Member="Tour" ThisKey="MaTour" OtherKey="MaTour" Type="Tour" IsForeignKey="true" />
+      <Association Name="DonHang_DonHangDetail" Member="DonHang" ThisKey="MaDH" OtherKey="MaDH" Type="DonHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonHang" Member="DonHangs">
+    <Type Name="DonHang">
+      <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayDat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TenTour" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SoNgayDi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NgayKhoiHanh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DonHang_DonHangDetail" Member="DonHangDetails" ThisKey="MaDH" OtherKey="MaDH" Type="DonHangDetail" />
+      <Association Name="KhachHang_DonHang" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
