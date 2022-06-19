@@ -1,0 +1,49 @@
+﻿@model Project_Travel.Models.Tour
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Detail</h2>
+
+<div style="display: inline-block; font-size: 30px ">
+    <img src="@Model.Hinh" width="1200px" height="700px" class="img-fluid" alt="...">
+    <div class="card-body">
+        <h2 class="card-title">Tour : @Model.TenTour</h2>
+        <p class="card-text">
+            Giá tiền: @Model.Gia
+            <br />
+            Ngày khởi hành: @Model.NgayKhoiHanh
+            <br />
+            Phương tiện: @Model.PhuongTien
+            <br />
+            Số ngày đi: @Model.SoNgayDi
+
+        </p>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Giá Người Lớn</th>
+            <th scope="col">Giá Trẻ Em</th>
+            <th scope="col">Hotek</th>
+            <th scope="col">Ghi Chú</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>@Model.GiaNguoiLon</th>
+            <td>@Model.GiaTreEm</td>
+            <td>@Model.Hotel_TieuChuan</td>
+            <td>@Model.GhiChu</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaTour }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

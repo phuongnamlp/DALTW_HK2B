@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Project_Travel.Models.Tour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Admin</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var item in Model)
+{
+    <div style="display: inline-block; padding: 50px; border-style: solid; border-color: #ccc" class="card" style="width: 18rem;">
+        <img src="@item.Hinh" width="270px" height="180px" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h3 class="card-title">Tour : @item.TenTour</h3>
+            <p class="card-text">
+                Giá tiền: @item.Gia
+                <br />
+                Ngày khởi hành: @item.NgayKhoiHanh
+                <br />
+                Phương tiện: @item.PhuongTien
+                <br />
+                Số ngày đi: @item.SoNgayDi
+            </p>
+            <div style="background: aqua" class="btn btn-primary">
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaTour })
+            </div>
+            <div style="background: aqua " class="btn btn-primary">
+                @Html.ActionLink("Detail", "Detail", new { id = item.MaTour })
+            </div>
+            <div style="background: aqua " class="btn btn-primary">
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaTour })
+            </div>
+            
+
+        </div>
+    </div>
+
+}
+
+</table>
