@@ -123,5 +123,47 @@ namespace Project_Travel.Controllers
             listGiohang.Clear();
             return RedirectToAction("Giohang");
         }
+
+        //#region // Mới hoàn thiện
+        //Xây dựng chức năng đặt hàng
+        //[HttpPost]
+        //public ActionResult DatHang()
+        //{
+        //    //Kiểm tra đăng đăng nhập
+        //    if (Session["use"] == null || Session["use"].ToString() == "")
+        //    {
+        //        return RedirectToAction("Dangnhap", "User");
+        //    }
+        //    //Kiểm tra giỏ hàng
+        //    if (Session["GioHang"] == null)
+        //    {
+        //        RedirectToAction("Index", "Home");
+        //    }
+        //    //Thêm đơn hàng
+        //    Donhang ddh = new Donhang();
+        //    Nguoidung kh = (Nguoidung)Session["use"];
+        //    List<GioHang> gh = LayGioHang();
+        //    ddh.MaNguoidung = kh.MaNguoiDung;
+        //    ddh.Ngaydat = DateTime.Now;
+        //    Console.WriteLine(ddh);
+        //    data.DonHangs.Add(ddh);
+        //    db.SaveChanges();
+        //    //Thêm chi tiết đơn hàng
+        //    foreach (var item in gh)
+        //    {
+        //        Chitietdonhang ctDH = new Chitietdonhang();
+        //        decimal thanhtien = item.iSoLuong * (decimal)item.dDonGia;
+        //        ctDH.Madon = ddh.Madon;
+        //        ctDH.Masp = item.iMasp;
+        //        ctDH.Soluong = item.iSoLuong;
+        //        ctDH.Dongia = (decimal)item.dDonGia;
+        //        ctDH.Thanhtien = (decimal)thanhtien;
+        //        data.DonHangDetails.Add(ctDH);
+        //    }
+        //    data.SaveChanges();
+        //    return RedirectToAction("Index", "Donhangs");
+        //}
+    
     }
+
 }

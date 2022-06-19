@@ -7,9 +7,7 @@
 
 <h2>ListTour</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 
     @*@foreach (var item in Model) {
             <tr>
@@ -54,14 +52,8 @@
                     <br />
                     Số ngày đi: @item.SoNgayDi
                 </p>
-                <div style="background: aqua" class="btn btn-primary">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaTour })
-                </div>
-                <div style="background: aqua " class="btn btn-primary">
+                <div style="background: aqua; text-align: center " class="btn btn-primary">
                     @Html.ActionLink("Detail", "Detail", new { id = item.MaTour })
-                </div>
-                <div style="background: aqua " class="btn btn-primary">
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaTour })
                 </div>
                 <div style="text-align: center; padding-top: 20px" class="DatMua">
                     <a class="btn btn-success" href="@Url.Action("ThemGiohang", "Giohang", new { @MaTour = item.MaTour, @strURL = Request.Url.ToString() })">Đặt mua</a>
@@ -71,5 +63,6 @@
         </div>
 
     }
+
 
 </table>

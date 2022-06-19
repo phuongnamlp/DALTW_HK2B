@@ -39,7 +39,7 @@ namespace Project_Travel.Models
             Hinh = tour.Hinh;
             GiaNguoiLon = double.Parse(tour.GiaNguoiLon.ToString());
             GiaTreEm = double.Parse(tour.GiaTreEm.ToString());
-            iSoluonglon = 0;
+            iSoluonglon = 1;
             iSoluongnho = 0;
         }
     }

@@ -16,16 +16,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Tour Du Lịch", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Tour Du Lịch", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <div style="text-align:center" class="navbar-collapse collapse">
+                <ul style="text-align:center;font-size:18px ; padding:0 25px; display: inline-block" class="nav navbar-nav">
+                    <li> @Html.ActionLink("Tour Du Lịch", "Index", "Home")</li>
+                    <li> @Html.ActionLink("Tin Tức", "About", "Home")</li>
+                    <li>@Html.ActionLink("ListTour", "ListTour", "Tour")</li>
                     <li>@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")</li>
-                    @*<li>@Html.Partial("~/Views/Đăng Kí.cshtml")</li>
-                    <li>@Html.Partial("~/Views/Đăng Nhập.cshtml")</li>*@
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Đăng Kí", "DangKy", "NguoiDung")</li>
+                    <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung")</li>
+                    <li>@Html.ActionLink("Đăng Xuất", "DangXuat", "NguoiDung")</li>
                 </ul>
             </div>
         </div>
@@ -33,8 +34,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="bg-light text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Travel:
+                <a class="text-dark" href="https://mdbootstrap.com/">Travel.com</a>
+            </div>
+            <!-- Copyright -->
         </footer>
     </div>
 

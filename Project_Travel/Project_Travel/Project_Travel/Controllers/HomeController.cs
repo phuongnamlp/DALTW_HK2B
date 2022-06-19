@@ -26,5 +26,10 @@ namespace Project_Travel.Controllers
 
             return View();
         }
+        public ActionResult Details()
+        {
+            return View();
+        }
+
     }
 }
