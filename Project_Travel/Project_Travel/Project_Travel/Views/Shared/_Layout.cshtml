@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Tour Du Lịch", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div style="text-align:center" class="navbar-collapse collapse">
+                <ul style="text-align:center;font-size:18px ; padding:0 25px; display: inline-block" class="nav navbar-nav">
+                    <li> @Html.ActionLink("Tour Du Lịch", "Index", "Home")</li>
+                    <li> @Html.ActionLink("Tin Tức", "About", "Home")</li>
+                    <li>@Html.ActionLink("ListTour", "ListTour", "Tour")</li>
+                    <li>@Html.Partial("~/Views/GioHang/GioHangPartial.cshtml")</li>
+                    <li>@Html.ActionLink("Đăng Kí", "DangKy", "NguoiDung")</li>
+                    <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung")</li>
+                    <li>@Html.ActionLink("Đăng Xuất", "DangXuat", "NguoiDung")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="bg-light text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Travel:
+                <a class="text-dark" href="https://mdbootstrap.com/">Travel.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("upload", required: false)
+    @RenderSection("scripts", required: false)
+</body>
+</html>
