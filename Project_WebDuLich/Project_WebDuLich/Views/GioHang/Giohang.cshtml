@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Project_Travel.Models.Giohang>
+
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Giỏ Hàng</h2>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TenTour)</th>
+        <th>@Html.DisplayNameFor(model => model.Hinh)</th>
+        <th>@Html.DisplayNameFor(model => model.GiaNguoiLon)</th>
+        <th>@Html.DisplayNameFor(model => model.GiaTreEm)</th>
+        <th>@Html.DisplayNameFor(model => model.iSoluonglon)</th>
+        <th>@Html.DisplayNameFor(model => model.iSoluongnho)</th>
+        <th>@Html.DisplayNameFor(model => model.dThanhtien)</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TenTour)</td>
+            <td><img src="@item.Hinh" width="180" /></td>
+            @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @MaTour = item.MaTour }))
+            {
+                <td>@String.Format("{0:0,0}", item.GiaNguoiLon) VND </td>
+                <td>@String.Format("{0:0,0}", item.GiaTreEm) VND </td>
+                <td><input type="number" min="0" name="txtSolglon" value="@item.iSoluonglon" /></td>
+                <td><input type="number" min="0" name="txtSolgnho" value="@item.iSoluongnho" /></td>
+                <td>@Html.DisplayFor(modelItem => item.dThanhtien)</td>
+                <td> <a href="@Url.Action("Detail","Product",new {@id = item.MaTour})">Chi Tiết</a>| @Html.ActionLink("Xoá", "XoaGioHang", new { @tentour = item.TenTour })</td>
+                <td><input type="submit" value="Cập Nhật" class="btn btn-success" /></td>
+            }
+        </tr>
+    }
+    <tr style="font-weight:bold;text-align:left;color:red">
+        @*<td colspan="2">Số loại sách: @ViewBag.Tongsoluongsanpham</td>*@
+        <td colspan="2">Số Lượng Vé: @ViewBag.Tongsoluong</td>
+        <td colspan="4">Tổng Tiền: @String.Format("{0:0,0}", @ViewBag.Tongtien) VND</td>
+    </tr>
+    <tr style="font-weight: bold; color: blue; text-align: right">
+        <td colspan="5">
+            @Html.ActionLink("Xoá Giỏ Hàng", "XoaTatCaGioHang")
+        </td>
+    </tr>
+    <tr style="font-weight: bold; color: yellow; text-align: right">
+        <td colspan="5">
+            @Html.ActionLink("Đặt Hàng", "DatHang", "GioHang")
+        </td>
+    </tr>
+
+</table>
+<!--<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-9">
+                <div class="card">
+
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="text-right" width="200"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <figure class="itemside">
+                                        <div class="aside"><img src="images/items/1.jpg" class="img-sm"></div>
+                                        <figcaption class="info">
+                                            <a href="#" class="title text-dark">Some name of item goes here nice</a>
+                                            <p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td>
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="price-wrap">
+                                        <var class="price">$1156.00</var>
+                                        <small class="text-muted"> $315.20 each </small>
+                                    </div>-->
+ <!-- price-wrap .// -->
+<!--</td>
+    <td class="text-right">
+        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+        <a href="" class="btn btn-light"> Remove</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <figure class="itemside">
+            <div class="aside"><img src="images/items/2.jpg" class="img-sm"></div>
+            <figcaption class="info">
+                <a href="#" class="title text-dark">Product name  goes here nice</a>
+                <p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
+            </figcaption>
+        </figure>
+    </td>
+    <td>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </td>
+    <td>
+        <div class="price-wrap">
+            <var class="price">$149.97</var>
+            <small class="text-muted"> $75.00 each </small>
+        </div>-->
+ <!-- price-wrap .// -->
+<!--</td>
+    <td class="text-right">
+        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+        <a href="" class="btn btn-light btn-round"> Remove</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <figure class="itemside">
+            <div class="aside"><img src="images/items/3.jpg" class="img-sm"></div>
+            <figcaption class="info">
+                <a href="#" class="title text-dark">Another name of some product goes just here as a demo text </a>
+                <p class="small text-muted">Size: XL, Color: blue,  Brand: Tissot</p>
+            </figcaption>
+        </figure>
+    </td>
+    <td>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </td>
+    <td>
+        <div class="price-wrap">
+            <var class="price">$98.00</var>
+            <small class="text-muted"> $578.00 each</small>
+        </div>-->
+ <!-- price-wrap .// -->
+<!--</td>
+                <td class="text-right">
+                    <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+                    <a href="" class="btn btn-light btn-round"> Remove</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="card-body border-top">
+        <a href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
+        <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+    </div>
+</div>-->
+ <!-- card.// -->
+<!--</main>--> <!-- col.// -->
+<!--<aside class="col-md-3">
+    <div class="card mb-3">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label>Have coupon?</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="" placeholder="Coupon code">
+                        <span class="input-group-append">
+                            <button class="btn btn-primary">Apply</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>-->
+ <!-- card-body.// -->
+<!--</div>-->  <!-- card .// -->
+<!--<div class="card">
+    <div class="card-body">
+        <dl class="dlist-align">
+            <dt>Total price:</dt>
+            <dd class="text-right">USD 568</dd>
+        </dl>
+        <dl class="dlist-align">
+            <dt>Discount:</dt>
+            <dd class="text-right">USD 658</dd>
+        </dl>
+        <dl class="dlist-align">
+            <dt>Total:</dt>
+            <dd class="text-right  h5"><strong>$1,650</strong></dd>
+        </dl>
+        <hr>
+        <p class="text-center mb-3">
+            <img src="images/misc/payments.png" height="26">
+        </p>
+
+    </div>-->
+ <!-- card-body.// -->
+<!--</div>-->  <!-- card .// -->
+<!--</aside>--> <!-- col.// -->
+<!--</div>
+
+</div>-->
+ <!-- container .//  -->
+<!--</section>-->

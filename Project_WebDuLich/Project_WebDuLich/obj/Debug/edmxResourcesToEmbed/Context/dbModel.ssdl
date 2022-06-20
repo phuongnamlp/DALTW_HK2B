@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DonHang">
+    <Key>
+      <PropertyRef Name="MaDH" />
+    </Key>
+    <Property Name="MaDH" Type="int" Nullable="false" />
+    <Property Name="MaKH" Type="int" />
+    <Property Name="NgayDat" Type="date" />
+    <Property Name="TenTour" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoNgayDi" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayKhoiHanh" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DonHangDetail">
+    <Key>
+      <PropertyRef Name="MaDH" />
+    </Key>
+    <Property Name="MaDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" />
+    <Property Name="TongGia" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MaTour" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tour">
+    <Key>
+      <PropertyRef Name="MaTour" />
+    </Key>
+    <Property Name="MaTour" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTour" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gia" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="NgayKhoiHanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhuongTien" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoNgayDi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hotel_TieuChuan" Type="int" />
+    <Property Name="GiaNguoiLon" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="GiaTreEm" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_DonHang_KhachHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonHangDetail_DonHang">
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
+    <End Role="DonHangDetail" Type="Self.DonHangDetail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DonHang">
+        <PropertyRef Name="MaDH" />
+      </Principal>
+      <Dependent Role="DonHangDetail">
+        <PropertyRef Name="MaDH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonHangDetail_Tour1">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="DonHangDetail" Type="Self.DonHangDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="MaTour" />
+      </Principal>
+      <Dependent Role="DonHangDetail">
+        <PropertyRef Name="MaTour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TourDBModelStoreContainer">
+    <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonHangDetail" EntityType="Self.DonHangDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DonHang_KhachHang" Association="Self.FK_DonHang_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonHangDetail_DonHang" Association="Self.FK_DonHangDetail_DonHang">
+      <End Role="DonHang" EntitySet="DonHang" />
+      <End Role="DonHangDetail" EntitySet="DonHangDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonHangDetail_Tour1" Association="Self.FK_DonHangDetail_Tour1">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="DonHangDetail" EntitySet="DonHangDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
